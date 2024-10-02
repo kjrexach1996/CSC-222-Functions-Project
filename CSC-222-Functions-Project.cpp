@@ -41,10 +41,9 @@ int main()
         while (!correct)
         {
             cout << "Is this correct? Enter \'y\' for \"yes\" or \'n\' for \"no\": ";
-            cin >> answer;
-            if (answer == 'y' || answer == 'n')
+            cin >> confirm;
+            if (confirm == 'y' || confirm == 'n')
             {
-                confirm = answer;
                 correct = true;
             }
             else
