@@ -1,20 +1,67 @@
-// CSC-222-Functions-Project.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// 
 //
 
 #include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+double calcDistance(double x1, double y1, double x2, double y2);
+double calcRadius(double x1, double y1, double x2, double y2);
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    double x1, y1, x2, y2, radius, circumference, area;
+    bool correct = false;
+    char confirm = 'n', answer;
+
+    cout << "Welcome! This program returns various properties of a circle.\n";
+    while (confirm == 'n')
+    {
+        cout << "Please enter the coordinates for the center of the circle.\n";
+        cout << "x: ";
+        cin >> x1;
+        cout << "y: ";
+        cin >> y1;
+
+        cout << "Please enter the coordinates for a point on the circumference.\n";
+        cout << "x: ";
+        cin >> x2;
+        cout << "y: ";
+        cin >> y2;
+
+        cout << "Center point coordinates: (" << x1 << ", " << y1 << ")\n";
+        cout << "Circumference point coordinates: (" << x2 << ", " << y2 << ")\n";
+     
+        while (!correct)
+        {
+            cout << "Is this correct? Enter \'y\' for \"yes\" or \'n\' for \"no\": ";
+            cin >> answer;
+            if (answer == 'y' || answer == 'n')
+            {
+                confirm = answer;
+                correct == true;
+            }
+            else
+                cout << "Invalid input!\n";
+        }
+        
+        
+    }
+    radius = calcRadius(x1, y1, x2, y2);
+
+    cout << setprecision(2);
+    cout << "The radius of the circle is " << radius << "units.";
+    return 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+double calcRadius(double x1, double y1, double x2, double y2)
+{
+    return calcDistance(x1, y1, x2, y2);
+}
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+double calcDistance(double x1, double y1, double x2, double y2)
+{
+    return sqrt(pow((x2 - x1), 2) + pow((y2 - y1), 2));
+}
