@@ -2,19 +2,59 @@
 //
 
 #include <iostream>
+#include <iomanip>
+using namespace std;
+
+void getPrices(double& price1, double& price2, double& price3);
+void calcRates(double price1, double price2, double price3, double& rate1, double& rate2);
+void displayResults(double price1, double price2, double price3, double rate1, double rate2);
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	double price_current_year, price_last_year, price_two_years_ago,
+		rate_last_year_to_current, rate_two_years_to_last;
+
+	cout << "Welcome! This program will calculate inflation rates based on an "
+		<< "item's price for three consecutive years, respectively.\n";
+
+	getPrices(price_current_year, price_last_year, price_two_years_ago);
+
+	calcRates(price_current_year, price_last_year, price_two_years_ago, rate_last_year_to_current, rate_two_years_to_last);
+
+	displayResults(price_current_year, price_last_year, price_two_years_ago, rate_last_year_to_current, rate_two_years_to_last);
+
+	return 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+void getPrices(double& price1, double& price2, double& price3)
+{
+	cout << "Please enter the item's price during the current year ($0.00): ";
+	cin >> price1;
+	cout << "Please enter the item's price from last year ($0.00): ";
+	cin >> price2;
+	cout << "Please enter the item's price from two years ago ($0.00): ";
+	cin >> price3;
+}
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+void calcRates(double price1, double price2, double price3, double& rate1, double& rate2)
+{
+	rate1 = ((price1 - price2) / price2) * 100;
+	rate2 = ((price2 - price3) / price3) * 100;
+}
+
+void displayResults(double price1, double price2, double price3, double rate1, double rate2)
+{
+	cout << "These are your item's prices from the last three consecutive years:\n" << setprecision(2) << fixed
+		<< "Current year: " << price1 << endl
+		<< "Last year: " << price2 << endl
+		<< "Two years ago: " << price3 << endl
+		<< "Inflation rate from last year to current year: " << rate1 << "%" << endl
+		<< "Inflation rate from two years ago to last year: " << rate2 << "%" << endl;
+
+	double rate_average = (rate1 + rate2) / 2;
+
+	if (rate_average > 0)
+		cout << "The inflation rate is increasing!";
+	else
+		cout << "The inflation rate is decreasing!";
+}
