@@ -15,11 +15,11 @@ double calcArea(double radius);
 int main()
 {
     double x1, y1, x2, y2, radius, circumference, area;
-    bool correct;
-    char confirm = 'n', answer;
+    bool confirm;
+    char correct = 'n';
 
     cout << "Welcome! This program returns various properties of a circle.\n";
-    while (confirm == 'n')
+    while (correct == 'n')
     {
         cout << "Please enter the coordinates for the center of the circle.\n";
         cout << "x: ";
@@ -36,15 +36,15 @@ int main()
         cout << "Center point coordinates: (" << x1 << ", " << y1 << ")\n";
         cout << "Circumference point coordinates: (" << x2 << ", " << y2 << ")\n";
 
-        correct = false;
+        confirm = false;
      
-        while (!correct)
+        while (!confirm)
         {
             cout << "Is this correct? Enter \'y\' for \"yes\" or \'n\' for \"no\": ";
-            cin >> confirm;
-            if (confirm == 'y' || confirm == 'n')
+            cin >> correct;
+            if (correct == 'y' || correct == 'n')
             {
-                correct = true;
+                confirm = true;
             }
             else
                 cout << "Invalid input!\n";
