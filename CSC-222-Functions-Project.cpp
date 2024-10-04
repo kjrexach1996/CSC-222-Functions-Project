@@ -53,6 +53,8 @@ void displayResults(double price1, double price2, double price3, double rate1, d
 
 	double rate_average = (rate1 + rate2) / 2;
 
+	cout << "Average inflation rate: " << rate_average << "%\n";
+
 	if (rate_average > 0)
 		cout << "The inflation rate is increasing!";
 	else
