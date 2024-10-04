@@ -62,9 +62,9 @@ void displayResults(double price1, double price2, double price3, double rate1, d
 {
 	//Displays all information including item prices and inflation rates
 	cout << "These are your item's prices from the last three consecutive years:\n" << setprecision(2) << fixed
-		<< "Current year: " << price1 << endl
-		<< "Last year: " << price2 << endl
-		<< "Two years ago: " << price3 << endl
+		<< "Current year: $" << price1 << endl
+		<< "Last year: $" << price2 << endl
+		<< "Two years ago: $" << price3 << endl
 		<< "Inflation rate from last year to current year: " << rate1 << "%" << endl
 		<< "Inflation rate from two years ago to last year: " << rate2 << "%" << endl;
 
